@@ -1,0 +1,2915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.makemusic.com/2012/finale" xmlns:finale="http://www.makemusic.com/2012/finale">
+<!--
+\brief This is the root element.
+\details Contains all the definitions for the schema.
+-->
+  <xs:element name="finale">
+<!--
+\brief This is the root element.
+\details Contains all the definitions for the schema.
+-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:mappings"/>
+        <xs:element ref="finale:header"/>
+        <xs:element ref="finale:options"/>
+        <xs:element ref="finale:others"/>
+        <xs:element ref="finale:details"/>
+        <xs:element ref="finale:entries"/>
+        <xs:element ref="finale:texts"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mappings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:mapGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mapGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:move"/>
+      </xs:sequence>
+      <xs:attribute name="maxExclusive" use="required" type="xs:decimal"/>
+      <xs:attribute name="minInclusive" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="move">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:parent"/>
+        <xs:element ref="finale:child"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parent" type="xs:NCName"/>
+  <xs:element name="child">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:new"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="new" type="xs:NCName"/>
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:headerData"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="headerData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:wordOrder"/>
+        <xs:element ref="finale:textEncoding"/>
+        <xs:element ref="finale:created"/>
+        <xs:element ref="finale:modified"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="wordOrder" type="xs:NCName"/>
+  <xs:element name="textEncoding" type="xs:NCName"/>
+  <xs:element name="created">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:year"/>
+        <xs:element ref="finale:month"/>
+        <xs:element ref="finale:day"/>
+        <xs:element ref="finale:modifiedBy"/>
+        <xs:element ref="finale:enigmaVersion"/>
+        <xs:element ref="finale:application"/>
+        <xs:element ref="finale:platform"/>
+        <xs:element ref="finale:appVersion"/>
+        <xs:element ref="finale:fileVersion"/>
+        <xs:element ref="finale:appRegion"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modified">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:year"/>
+        <xs:element ref="finale:month"/>
+        <xs:element ref="finale:day"/>
+        <xs:element ref="finale:modifiedBy"/>
+        <xs:element ref="finale:enigmaVersion"/>
+        <xs:element ref="finale:application"/>
+        <xs:element ref="finale:platform"/>
+        <xs:element ref="finale:appVersion"/>
+        <xs:element ref="finale:fileVersion"/>
+        <xs:element ref="finale:appRegion"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="options">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:accidentalOptions"/>
+        <xs:element ref="finale:alternateNotationOptions"/>
+        <xs:element ref="finale:augmentationDotOptions"/>
+        <xs:element ref="finale:barlineOptions"/>
+        <xs:element ref="finale:beamOptions"/>
+        <xs:element ref="finale:chordOptions"/>
+        <xs:element ref="finale:clefOptions"/>
+        <xs:element ref="finale:extractPartOptions"/>
+        <xs:element ref="finale:flagOptions"/>
+        <xs:element ref="finale:fontOptions"/>
+        <xs:element ref="finale:graceNoteOptions"/>
+        <xs:element ref="finale:gridGuideOptions"/>
+        <xs:element ref="finale:keySignatureOptions"/>
+        <xs:element ref="finale:lineCurveOptions"/>
+        <xs:element ref="finale:lyricOptions"/>
+        <xs:element ref="finale:metatoolOptions"/>
+        <xs:element ref="finale:miscOptions"/>
+        <xs:element ref="finale:multimeasureRestOptions"/>
+        <xs:element ref="finale:musicSpacingOptions"/>
+        <xs:element ref="finale:musicSymbolOptions"/>
+        <xs:element ref="finale:noteRestOptions"/>
+        <xs:element ref="finale:pageFormatOptions"/>
+        <xs:element ref="finale:pianoBraceBracketOptions"/>
+        <xs:element ref="finale:playbackOptions"/>
+        <xs:element ref="finale:repeatOptions"/>
+        <xs:element ref="finale:scoreManagerOptions"/>
+        <xs:element ref="finale:smartShapeOptions"/>
+        <xs:element ref="finale:smpOptions"/>
+        <xs:element ref="finale:staffOptions"/>
+        <xs:element ref="finale:stemOptions"/>
+        <xs:element ref="finale:textOptions"/>
+        <xs:element ref="finale:tieOptions"/>
+        <xs:element ref="finale:timeSignatureOptions"/>
+        <xs:element ref="finale:tupletOptions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="accidentalOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:overlap"/>
+        <xs:element ref="finale:bacciAdd"/>
+        <xs:element ref="finale:useNewAcciPositioning"/>
+        <xs:element ref="finale:acciNoteSpace"/>
+        <xs:element ref="finale:acciAcciSpace"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="overlap" type="xs:integer"/>
+  <xs:element name="bacciAdd" type="xs:integer"/>
+  <xs:element name="useNewAcciPositioning">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="acciNoteSpace" type="xs:integer"/>
+  <xs:element name="acciAcciSpace" type="xs:integer"/>
+  <xs:element name="alternateNotationOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:halfSlashLift"/>
+        <xs:element ref="finale:wholeSlashLift"/>
+        <xs:element ref="finale:dWholeSlashLift"/>
+        <xs:element ref="finale:twoMeasNumLift"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="halfSlashLift" type="xs:integer"/>
+  <xs:element name="wholeSlashLift" type="xs:integer"/>
+  <xs:element name="dWholeSlashLift" type="xs:integer"/>
+  <xs:element name="twoMeasNumLift" type="xs:integer"/>
+  <xs:element name="augmentationDotOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:dotOffset"/>
+        <xs:element ref="finale:doDotDownAdjust"/>
+        <xs:element ref="finale:dotFirstOffset"/>
+        <xs:element ref="finale:dotLift"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dotOffset" type="xs:integer"/>
+  <xs:element name="doDotDownAdjust">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="dotFirstOffset" type="xs:integer"/>
+  <xs:element name="dotLift" type="xs:integer"/>
+  <xs:element name="barlineOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:drawFinalBarlineOnLastMeas"/>
+        <xs:element ref="finale:drawLeftBarlineMultipleStaves"/>
+        <xs:element ref="finale:drawBarlines"/>
+        <xs:element ref="finale:barlineWidth"/>
+        <xs:element ref="finale:thickBarlineWidth"/>
+        <xs:element ref="finale:doubleBarlineSpace"/>
+        <xs:element ref="finale:finalBarlineSpace"/>
+        <xs:element ref="finale:barlineDashOn"/>
+        <xs:element ref="finale:barlineDashOff"/>
+        <xs:element ref="finale:drawDoubleBarlineBeforeKeyChanges"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="drawFinalBarlineOnLastMeas">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="drawLeftBarlineMultipleStaves">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="drawBarlines">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="barlineWidth" type="xs:integer"/>
+  <xs:element name="thickBarlineWidth" type="xs:integer"/>
+  <xs:element name="doubleBarlineSpace" type="xs:integer"/>
+  <xs:element name="finalBarlineSpace" type="xs:integer"/>
+  <xs:element name="barlineDashOn" type="xs:integer"/>
+  <xs:element name="barlineDashOff" type="xs:integer"/>
+  <xs:element name="drawDoubleBarlineBeforeKeyChanges">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beamOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:beamStubLength"/>
+        <xs:element ref="finale:maxSlope"/>
+        <xs:element ref="finale:beamSepar"/>
+        <xs:element ref="finale:beamingStyle"/>
+        <xs:element ref="finale:incRestsInClassicBeams"/>
+        <xs:element ref="finale:beamFourEighthsInCommonTime"/>
+        <xs:element ref="finale:beamThreeEighthsInCommonTime"/>
+        <xs:element ref="finale:beamWidth"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="beamStubLength" type="xs:integer"/>
+  <xs:element name="maxSlope" type="xs:integer"/>
+  <xs:element name="beamSepar" type="xs:integer"/>
+  <xs:element name="beamingStyle" type="xs:NCName"/>
+  <xs:element name="incRestsInClassicBeams">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beamFourEighthsInCommonTime">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beamThreeEighthsInCommonTime">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beamWidth" type="xs:integer"/>
+  <xs:element name="chordOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fretPercent"/>
+        <xs:element ref="finale:chordPercent"/>
+        <xs:element ref="finale:chordSharpLift"/>
+        <xs:element ref="finale:chordFlatLift"/>
+        <xs:element ref="finale:chordNaturalLift"/>
+        <xs:element ref="finale:fretStyleID"/>
+        <xs:element ref="finale:fretInstID"/>
+        <xs:element ref="finale:italicizeCapoChords"/>
+        <xs:element ref="finale:chordAlignment"/>
+        <xs:element ref="finale:useSimpleChordSpelling"/>
+        <xs:element ref="finale:chordPlayback"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fretPercent" type="xs:double"/>
+  <xs:element name="chordPercent" type="xs:double"/>
+  <xs:element name="chordSharpLift" type="xs:integer"/>
+  <xs:element name="chordFlatLift" type="xs:integer"/>
+  <xs:element name="chordNaturalLift" type="xs:integer"/>
+  <xs:element name="fretStyleID" type="xs:integer"/>
+  <xs:element name="fretInstID" type="xs:integer"/>
+  <xs:element name="italicizeCapoChords">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="chordAlignment" type="xs:NCName"/>
+  <xs:element name="useSimpleChordSpelling">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="chordPlayback">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="clefOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:endMeasClefPercent"/>
+        <xs:element ref="finale:endMeasClefPosAdd"/>
+        <xs:element ref="finale:clefFront"/>
+        <xs:element ref="finale:cautionaryClefChanges"/>
+        <xs:element maxOccurs="unbounded" ref="finale:clefDef"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="endMeasClefPercent" type="xs:integer"/>
+  <xs:element name="endMeasClefPosAdd" type="xs:integer"/>
+  <xs:element name="clefFront" type="xs:integer"/>
+  <xs:element name="cautionaryClefChanges">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="clefDef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:adjust"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:shapeID"/>
+          <xs:element ref="finale:isShape"/>
+          <xs:element ref="finale:scaleToStaffHeight"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:clefChar"/>
+        <xs:element minOccurs="0" ref="finale:clefYDisp"/>
+      </xs:sequence>
+      <xs:attribute name="index" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="adjust" type="xs:integer"/>
+  <xs:element name="shapeID" type="xs:integer"/>
+  <xs:element name="isShape">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="scaleToStaffHeight">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="clefChar" type="xs:integer"/>
+  <xs:element name="clefYDisp" type="xs:integer"/>
+  <xs:element name="extractPartOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:openPart"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="openPart">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="flagOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:eighthFlagHoist"/>
+        <xs:element ref="finale:upVAdj"/>
+        <xs:element ref="finale:downVAdj"/>
+        <xs:element ref="finale:upVadj2"/>
+        <xs:element ref="finale:downVAdj2"/>
+        <xs:element ref="finale:upVAdj16"/>
+        <xs:element ref="finale:downVAdj16"/>
+        <xs:element ref="finale:stUpVAdj"/>
+        <xs:element ref="finale:stDownVAdj"/>
+        <xs:element ref="finale:separ"/>
+        <xs:element ref="finale:extra"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eighthFlagHoist" type="xs:integer"/>
+  <xs:element name="upVAdj" type="xs:integer"/>
+  <xs:element name="downVAdj" type="xs:integer"/>
+  <xs:element name="upVadj2" type="xs:integer"/>
+  <xs:element name="downVAdj2" type="xs:integer"/>
+  <xs:element name="upVAdj16" type="xs:integer"/>
+  <xs:element name="downVAdj16" type="xs:integer"/>
+  <xs:element name="stUpVAdj" type="xs:integer"/>
+  <xs:element name="stDownVAdj" type="xs:integer"/>
+  <xs:element name="separ" type="xs:integer"/>
+  <xs:element name="extra" type="xs:integer"/>
+  <xs:element name="fontOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:font"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="font">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+        <xs:element minOccurs="0" ref="finale:efx"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="graceNoteOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:tabGracePerc"/>
+        <xs:element ref="finale:gracePerc"/>
+        <xs:element ref="finale:playbackDuration"/>
+        <xs:element ref="finale:graceBackup"/>
+        <xs:element ref="finale:slashFlaggedGraceNotes"/>
+        <xs:element ref="finale:graceSlashWidth"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tabGracePerc" type="xs:integer"/>
+  <xs:element name="gracePerc" type="xs:integer"/>
+  <xs:element name="playbackDuration" type="xs:integer"/>
+  <xs:element name="graceBackup" type="xs:integer"/>
+  <xs:element name="slashFlaggedGraceNotes">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="graceSlashWidth" type="xs:integer"/>
+  <xs:element name="gridGuideOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:gridStyle"/>
+        <xs:element ref="finale:guideStyle"/>
+        <xs:element ref="finale:snapGridArtics"/>
+        <xs:element ref="finale:snapGridBrackets"/>
+        <xs:element ref="finale:snapGridChords"/>
+        <xs:element ref="finale:snapGridFretboards"/>
+        <xs:element ref="finale:snapGridGraphicsResize"/>
+        <xs:element ref="finale:snapGridGraphicsMove"/>
+        <xs:element ref="finale:snapGridLyrics"/>
+        <xs:element ref="finale:snapGridMeasNums"/>
+        <xs:element ref="finale:snapGridRepeats"/>
+        <xs:element ref="finale:snapGridScoreExps"/>
+        <xs:element ref="finale:snapGridSpecTools"/>
+        <xs:element ref="finale:snapGridStaffNames"/>
+        <xs:element ref="finale:snapGridStaffs"/>
+        <xs:element ref="finale:snapGridTextBlocksResize"/>
+        <xs:element ref="finale:snapGridTextBlocksMove"/>
+        <xs:element ref="finale:snapGridTuplets"/>
+        <xs:element ref="finale:drawFreqX"/>
+        <xs:element ref="finale:drawFreqY"/>
+        <xs:element ref="finale:showGuides"/>
+        <xs:element ref="finale:snapGuideArtics"/>
+        <xs:element ref="finale:snapGuideBrackets"/>
+        <xs:element ref="finale:snapGuideChords"/>
+        <xs:element ref="finale:snapGuideFretboards"/>
+        <xs:element ref="finale:snapGuideGraphicsResize"/>
+        <xs:element ref="finale:snapGuideGraphicsMove"/>
+        <xs:element ref="finale:snapGuideLyrics"/>
+        <xs:element ref="finale:snapGuideMeasNums"/>
+        <xs:element ref="finale:snapGuideRepeats"/>
+        <xs:element ref="finale:snapGuideScoreExps"/>
+        <xs:element ref="finale:snapGuideSpecTools"/>
+        <xs:element ref="finale:snapGuideStaffNames"/>
+        <xs:element ref="finale:snapGuideStaffs"/>
+        <xs:element ref="finale:snapGuideTextBlocksResize"/>
+        <xs:element ref="finale:snapGuideTextBlocksMove"/>
+        <xs:element ref="finale:snapGuideTuplets"/>
+        <xs:element ref="finale:snapSizeX"/>
+        <xs:element ref="finale:snapSizeY"/>
+        <xs:element ref="finale:gravityZone"/>
+        <xs:element ref="finale:gridColorRed"/>
+        <xs:element ref="finale:gridColorGreen"/>
+        <xs:element ref="finale:gridColorBlue"/>
+        <xs:element ref="finale:guideColorGreen"/>
+        <xs:element ref="finale:guideColorBlue"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gridStyle" type="xs:NCName"/>
+  <xs:element name="guideStyle" type="xs:NCName"/>
+  <xs:element name="snapGridArtics">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridBrackets">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridChords">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridFretboards">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridGraphicsResize">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridGraphicsMove">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridLyrics">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridMeasNums">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridRepeats">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridScoreExps">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridSpecTools">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridStaffNames">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridStaffs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridTextBlocksResize">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridTextBlocksMove">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGridTuplets">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="drawFreqX" type="xs:integer"/>
+  <xs:element name="drawFreqY" type="xs:integer"/>
+  <xs:element name="showGuides">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideArtics">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideBrackets">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideChords">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideFretboards">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideGraphicsResize">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideGraphicsMove">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideLyrics">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideMeasNums">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideRepeats">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideScoreExps">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideSpecTools">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideStaffNames">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideStaffs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideTextBlocksResize">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideTextBlocksMove">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapGuideTuplets">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="snapSizeX" type="xs:integer"/>
+  <xs:element name="snapSizeY" type="xs:integer"/>
+  <xs:element name="gravityZone" type="xs:integer"/>
+  <xs:element name="gridColorRed" type="xs:integer"/>
+  <xs:element name="gridColorGreen" type="xs:integer"/>
+  <xs:element name="gridColorBlue" type="xs:integer"/>
+  <xs:element name="guideColorGreen" type="xs:integer"/>
+  <xs:element name="guideColorBlue" type="xs:integer"/>
+  <xs:element name="keySignatureOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:doKeyCancel"/>
+        <xs:element ref="finale:doBankDiff"/>
+        <xs:element ref="finale:keyFront"/>
+        <xs:element ref="finale:keyBack"/>
+        <xs:element ref="finale:simplifyKeyHoldOctave"/>
+        <xs:element ref="finale:cautionaryKeyChanges"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="doKeyCancel">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="doBankDiff">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="keyFront" type="xs:integer"/>
+  <xs:element name="keyBack" type="xs:integer"/>
+  <xs:element name="simplifyKeyHoldOctave">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cautionaryKeyChanges">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="lineCurveOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:restLegerFrontLength"/>
+        <xs:element ref="finale:restLegerBackLength"/>
+        <xs:element ref="finale:bezierStep"/>
+        <xs:element ref="finale:enclosureWidth"/>
+        <xs:element ref="finale:enclosureRoundCorners"/>
+        <xs:element ref="finale:enclosureCornerRadius"/>
+        <xs:element ref="finale:staffLineWidth"/>
+        <xs:element ref="finale:legerLineWidth"/>
+        <xs:element ref="finale:legerFrontLength"/>
+        <xs:element ref="finale:legerBackLength"/>
+        <xs:element ref="finale:psUlDepth"/>
+        <xs:element ref="finale:psUlWidth"/>
+        <xs:element ref="finale:pathSlurTipWidth"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="restLegerFrontLength" type="xs:integer"/>
+  <xs:element name="restLegerBackLength" type="xs:integer"/>
+  <xs:element name="bezierStep" type="xs:integer"/>
+  <xs:element name="enclosureWidth" type="xs:integer"/>
+  <xs:element name="enclosureRoundCorners">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="enclosureCornerRadius" type="xs:integer"/>
+  <xs:element name="staffLineWidth" type="xs:integer"/>
+  <xs:element name="legerLineWidth" type="xs:integer"/>
+  <xs:element name="legerFrontLength" type="xs:integer"/>
+  <xs:element name="legerBackLength" type="xs:integer"/>
+  <xs:element name="psUlDepth" type="xs:double"/>
+  <xs:element name="psUlWidth" type="xs:double"/>
+  <xs:element name="pathSlurTipWidth" type="xs:double"/>
+  <xs:element name="lyricOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:hyphenChar"/>
+        <xs:element ref="finale:maxHyphenSeparation"/>
+        <xs:element ref="finale:wordExtVertOffset"/>
+        <xs:element ref="finale:wordExtHorzOffset"/>
+        <xs:element ref="finale:useSmartWordExtensions"/>
+        <xs:element ref="finale:useSmartHyphens"/>
+        <xs:element ref="finale:smartHyphenStart"/>
+        <xs:element ref="finale:wordExtMinLength"/>
+        <xs:element ref="finale:wordExtOffsetToNotehead"/>
+        <xs:element ref="finale:lyricAutoNumType"/>
+        <xs:element ref="finale:wordExtLineWidth"/>
+        <xs:element maxOccurs="unbounded" ref="finale:lyricSyllPosStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:wordExtConnectStyle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyphenChar" type="xs:integer"/>
+  <xs:element name="maxHyphenSeparation" type="xs:integer"/>
+  <xs:element name="wordExtVertOffset" type="xs:integer"/>
+  <xs:element name="wordExtHorzOffset" type="xs:integer"/>
+  <xs:element name="useSmartWordExtensions">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="useSmartHyphens">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="smartHyphenStart" type="xs:NCName"/>
+  <xs:element name="wordExtMinLength" type="xs:integer"/>
+  <xs:element name="wordExtOffsetToNotehead">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="lyricAutoNumType" type="xs:NCName"/>
+  <xs:element name="wordExtLineWidth" type="xs:integer"/>
+  <xs:element name="lyricSyllPosStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:align"/>
+        <xs:element ref="finale:justify"/>
+        <xs:element ref="finale:on"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="align" type="xs:NCName"/>
+  <xs:element name="on">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="wordExtConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:connectIndex"/>
+        <xs:element minOccurs="0" ref="finale:xOffset"/>
+        <xs:element minOccurs="0" ref="finale:yOffset"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metatoolOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:metatool"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metatool">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="index" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="miscOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:retainOctaveTransInConcertPitch"/>
+        <xs:element ref="finale:combineRestsAcrossLayers"/>
+        <xs:element ref="finale:sdDashOn"/>
+        <xs:element ref="finale:sdDashOff"/>
+        <xs:element ref="finale:drawMeasureNumbersOverBarlines"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="retainOctaveTransInConcertPitch">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="combineRestsAcrossLayers">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="sdDashOn" type="xs:integer"/>
+  <xs:element name="sdDashOff" type="xs:integer"/>
+  <xs:element name="drawMeasureNumbersOverBarlines">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="multimeasureRestOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:meaSpace"/>
+        <xs:element ref="finale:numdec"/>
+        <xs:element ref="finale:shapeDef"/>
+        <xs:element ref="finale:numStart"/>
+        <xs:element ref="finale:threshold"/>
+        <xs:element ref="finale:spacing"/>
+        <xs:element ref="finale:startAdjust"/>
+        <xs:element ref="finale:endAdjust"/>
+        <xs:element ref="finale:autoUpdateMmRests"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meaSpace" type="xs:integer"/>
+  <xs:element name="numdec" type="xs:integer"/>
+  <xs:element name="numStart" type="xs:integer"/>
+  <xs:element name="threshold" type="xs:integer"/>
+  <xs:element name="startAdjust" type="xs:integer"/>
+  <xs:element name="endAdjust" type="xs:integer"/>
+  <xs:element name="autoUpdateMmRests">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="musicSpacingOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:layoutType"/>
+        <xs:element ref="finale:maxWidth"/>
+        <xs:element ref="finale:minDistance"/>
+        <xs:element ref="finale:minDistTiedNotes"/>
+        <xs:element ref="finale:avoidColNotes"/>
+        <xs:element ref="finale:avoidColLyrics"/>
+        <xs:element ref="finale:avoidColClefs"/>
+        <xs:element ref="finale:avoidColSeconds"/>
+        <xs:element ref="finale:avoidColStems"/>
+        <xs:element ref="finale:avoidColUnisons"/>
+        <xs:element ref="finale:avoidColLedgers"/>
+        <xs:element ref="finale:manualPositioning"/>
+        <xs:element ref="finale:interpolateAllotments"/>
+        <xs:element ref="finale:referenceDuration"/>
+        <xs:element ref="finale:referenceWidth"/>
+        <xs:element ref="finale:scalingFactor"/>
+        <xs:element ref="finale:defaultAllotment"/>
+        <xs:element ref="finale:minDistGrace"/>
+        <xs:element ref="finale:graceNoteManualPositioning"/>
+        <xs:element ref="finale:musFront"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layoutType" type="xs:NCName"/>
+  <xs:element name="maxWidth" type="xs:integer"/>
+  <xs:element name="minDistance" type="xs:integer"/>
+  <xs:element name="minDistTiedNotes" type="xs:integer"/>
+  <xs:element name="avoidColNotes">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidColLyrics">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidColClefs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidColSeconds">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidColStems">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidColUnisons" type="xs:NCName"/>
+  <xs:element name="avoidColLedgers">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="manualPositioning" type="xs:NCName"/>
+  <xs:element name="interpolateAllotments">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="referenceDuration" type="xs:integer"/>
+  <xs:element name="referenceWidth" type="xs:integer"/>
+  <xs:element name="scalingFactor" type="xs:double"/>
+  <xs:element name="defaultAllotment" type="xs:integer"/>
+  <xs:element name="minDistGrace" type="xs:integer"/>
+  <xs:element name="graceNoteManualPositioning" type="xs:NCName"/>
+  <xs:element name="musFront" type="xs:integer"/>
+  <xs:element name="musicSymbolOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:noteheadQuarter"/>
+        <xs:element ref="finale:noteheadHalf"/>
+        <xs:element ref="finale:noteheadWhole"/>
+        <xs:element ref="finale:noteheadDblWhole"/>
+        <xs:element ref="finale:natural"/>
+        <xs:element ref="finale:flat"/>
+        <xs:element ref="finale:sharp"/>
+        <xs:element ref="finale:dblFlat"/>
+        <xs:element ref="finale:dblSharp"/>
+        <xs:element ref="finale:parenNatural"/>
+        <xs:element ref="finale:parenFlat"/>
+        <xs:element ref="finale:parenSharp"/>
+        <xs:element ref="finale:parenDblFlat"/>
+        <xs:element ref="finale:parenDblSharp"/>
+        <xs:element ref="finale:chordNatural"/>
+        <xs:element ref="finale:chordFlat"/>
+        <xs:element ref="finale:chordSharp"/>
+        <xs:element ref="finale:chordDblFlat"/>
+        <xs:element ref="finale:chordDblSharp"/>
+        <xs:element ref="finale:keySigNatural"/>
+        <xs:element ref="finale:keySigFlat"/>
+        <xs:element ref="finale:keySigSharp"/>
+        <xs:element ref="finale:keySigDblFlat"/>
+        <xs:element ref="finale:keySigDblSharp"/>
+        <xs:element ref="finale:restLonga"/>
+        <xs:element ref="finale:restDblWhole"/>
+        <xs:element ref="finale:restWhole"/>
+        <xs:element ref="finale:restHalf"/>
+        <xs:element ref="finale:restQuarter"/>
+        <xs:element ref="finale:restEighth"/>
+        <xs:element ref="finale:rest16th"/>
+        <xs:element ref="finale:rest32nd"/>
+        <xs:element ref="finale:rest64th"/>
+        <xs:element ref="finale:rest128th"/>
+        <xs:element ref="finale:restDefMeas"/>
+        <xs:element ref="finale:oneBarRepeat"/>
+        <xs:element ref="finale:twoBarRepeat"/>
+        <xs:element ref="finale:slashBar"/>
+        <xs:element ref="finale:quarterSlash"/>
+        <xs:element ref="finale:halfSlash"/>
+        <xs:element ref="finale:wholeSlash"/>
+        <xs:element ref="finale:dblWholeSlash"/>
+        <xs:element ref="finale:timeSigPlus"/>
+        <xs:element ref="finale:timeSigPlusParts"/>
+        <xs:element ref="finale:timeSigAbrvCommon"/>
+        <xs:element ref="finale:timeSigAbrvCut"/>
+        <xs:element ref="finale:timeSigAbrvCommonParts"/>
+        <xs:element ref="finale:timeSigAbrvCutParts"/>
+        <xs:element ref="finale:augDot"/>
+        <xs:element ref="finale:forwardRepeatDot"/>
+        <xs:element ref="finale:backRepeatDot"/>
+        <xs:element ref="finale:eightVaUp"/>
+        <xs:element ref="finale:eightVbDown"/>
+        <xs:element ref="finale:fifteenMaUp"/>
+        <xs:element ref="finale:fifteenMbDown"/>
+        <xs:element ref="finale:trillChar"/>
+        <xs:element ref="finale:wiggleChar"/>
+        <xs:element ref="finale:flagUp"/>
+        <xs:element ref="finale:flagDown"/>
+        <xs:element ref="finale:flag16Up"/>
+        <xs:element ref="finale:flag16Down"/>
+        <xs:element ref="finale:flag2Up"/>
+        <xs:element ref="finale:flag2Down"/>
+        <xs:element ref="finale:flagStraightUp"/>
+        <xs:element ref="finale:flagStraightDown"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="noteheadQuarter" type="xs:integer"/>
+  <xs:element name="noteheadHalf" type="xs:integer"/>
+  <xs:element name="noteheadWhole" type="xs:integer"/>
+  <xs:element name="noteheadDblWhole" type="xs:integer"/>
+  <xs:element name="natural" type="xs:integer"/>
+  <xs:element name="flat" type="xs:integer"/>
+  <xs:element name="sharp" type="xs:integer"/>
+  <xs:element name="dblFlat" type="xs:integer"/>
+  <xs:element name="dblSharp" type="xs:integer"/>
+  <xs:element name="parenNatural" type="xs:integer"/>
+  <xs:element name="parenFlat" type="xs:integer"/>
+  <xs:element name="parenSharp" type="xs:integer"/>
+  <xs:element name="parenDblFlat" type="xs:integer"/>
+  <xs:element name="parenDblSharp" type="xs:integer"/>
+  <xs:element name="chordNatural" type="xs:integer"/>
+  <xs:element name="chordFlat" type="xs:integer"/>
+  <xs:element name="chordSharp" type="xs:integer"/>
+  <xs:element name="chordDblFlat" type="xs:integer"/>
+  <xs:element name="chordDblSharp" type="xs:integer"/>
+  <xs:element name="keySigNatural" type="xs:integer"/>
+  <xs:element name="keySigFlat" type="xs:integer"/>
+  <xs:element name="keySigSharp" type="xs:integer"/>
+  <xs:element name="keySigDblFlat" type="xs:integer"/>
+  <xs:element name="keySigDblSharp" type="xs:integer"/>
+  <xs:element name="restLonga" type="xs:integer"/>
+  <xs:element name="restDblWhole" type="xs:integer"/>
+  <xs:element name="restWhole" type="xs:integer"/>
+  <xs:element name="restHalf" type="xs:integer"/>
+  <xs:element name="restQuarter" type="xs:integer"/>
+  <xs:element name="restEighth" type="xs:integer"/>
+  <xs:element name="rest16th" type="xs:integer"/>
+  <xs:element name="rest32nd" type="xs:integer"/>
+  <xs:element name="rest64th" type="xs:integer"/>
+  <xs:element name="rest128th" type="xs:integer"/>
+  <xs:element name="restDefMeas" type="xs:integer"/>
+  <xs:element name="oneBarRepeat" type="xs:integer"/>
+  <xs:element name="twoBarRepeat" type="xs:integer"/>
+  <xs:element name="slashBar" type="xs:integer"/>
+  <xs:element name="quarterSlash" type="xs:integer"/>
+  <xs:element name="halfSlash" type="xs:integer"/>
+  <xs:element name="wholeSlash" type="xs:integer"/>
+  <xs:element name="dblWholeSlash" type="xs:integer"/>
+  <xs:element name="timeSigPlus" type="xs:integer"/>
+  <xs:element name="timeSigPlusParts" type="xs:integer"/>
+  <xs:element name="timeSigAbrvCommon" type="xs:integer"/>
+  <xs:element name="timeSigAbrvCut" type="xs:integer"/>
+  <xs:element name="timeSigAbrvCommonParts" type="xs:integer"/>
+  <xs:element name="timeSigAbrvCutParts" type="xs:integer"/>
+  <xs:element name="augDot" type="xs:integer"/>
+  <xs:element name="forwardRepeatDot" type="xs:integer"/>
+  <xs:element name="backRepeatDot" type="xs:integer"/>
+  <xs:element name="eightVaUp" type="xs:integer"/>
+  <xs:element name="eightVbDown" type="xs:integer"/>
+  <xs:element name="fifteenMaUp" type="xs:integer"/>
+  <xs:element name="fifteenMbDown" type="xs:integer"/>
+  <xs:element name="trillChar" type="xs:integer"/>
+  <xs:element name="wiggleChar" type="xs:integer"/>
+  <xs:element name="flagUp" type="xs:integer"/>
+  <xs:element name="flagDown" type="xs:integer"/>
+  <xs:element name="flag16Up" type="xs:integer"/>
+  <xs:element name="flag16Down" type="xs:integer"/>
+  <xs:element name="flag2Up" type="xs:integer"/>
+  <xs:element name="flag2Down" type="xs:integer"/>
+  <xs:element name="flagStraightUp" type="xs:integer"/>
+  <xs:element name="flagStraightDown" type="xs:integer"/>
+  <xs:element name="noteRestOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:doCrossOver"/>
+        <xs:element ref="finale:drop64thRest"/>
+        <xs:element ref="finale:drop128thRest"/>
+        <xs:element ref="finale:drawOutline"/>
+        <xs:element maxOccurs="unbounded" ref="finale:noteColor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="doCrossOver">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="drop64thRest" type="xs:integer"/>
+  <xs:element name="drop128thRest" type="xs:integer"/>
+  <xs:element name="drawOutline">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="noteColor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:red"/>
+        <xs:element ref="finale:green"/>
+        <xs:element ref="finale:blue"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="red" type="xs:integer"/>
+  <xs:element name="green" type="xs:integer"/>
+  <xs:element name="blue" type="xs:integer"/>
+  <xs:element name="pageFormatOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:pageFormatScore"/>
+        <xs:element ref="finale:pageFormatParts"/>
+        <xs:element ref="finale:avoidSystemMarginCollisions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pageFormatScore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:pageHeight"/>
+        <xs:element ref="finale:pageWidth"/>
+        <xs:element ref="finale:pagePercent"/>
+        <xs:element ref="finale:sysPercent"/>
+        <xs:element ref="finale:rawStaffHeight"/>
+        <xs:element ref="finale:leftPageMarginTop"/>
+        <xs:element ref="finale:leftPageMarginLeft"/>
+        <xs:element ref="finale:leftPageMarginBottom"/>
+        <xs:element ref="finale:leftPageMarginRight"/>
+        <xs:element ref="finale:rightPageMarginTop"/>
+        <xs:element ref="finale:rightPageMarginLeft"/>
+        <xs:element ref="finale:rightPageMarginBottom"/>
+        <xs:element ref="finale:rightPageMarginRight"/>
+        <xs:element ref="finale:sysMarginTop"/>
+        <xs:element ref="finale:sysMarginBottom"/>
+        <xs:element ref="finale:sysDistanceBetween"/>
+        <xs:element ref="finale:differentFirstSysMargin"/>
+        <xs:element ref="finale:firstSysMarginTop"/>
+        <xs:element ref="finale:firstSysMarginLeft"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pageFormatParts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:pageHeight"/>
+        <xs:element ref="finale:pageWidth"/>
+        <xs:element ref="finale:pagePercent"/>
+        <xs:element ref="finale:sysPercent"/>
+        <xs:element ref="finale:rawStaffHeight"/>
+        <xs:element ref="finale:leftPageMarginTop"/>
+        <xs:element ref="finale:leftPageMarginLeft"/>
+        <xs:element ref="finale:leftPageMarginBottom"/>
+        <xs:element ref="finale:leftPageMarginRight"/>
+        <xs:element ref="finale:rightPageMarginTop"/>
+        <xs:element ref="finale:rightPageMarginLeft"/>
+        <xs:element ref="finale:rightPageMarginBottom"/>
+        <xs:element ref="finale:rightPageMarginRight"/>
+        <xs:element ref="finale:sysMarginTop"/>
+        <xs:element ref="finale:sysMarginBottom"/>
+        <xs:element ref="finale:sysDistanceBetween"/>
+        <xs:element ref="finale:differentFirstSysMargin"/>
+        <xs:element ref="finale:firstSysMarginTop"/>
+        <xs:element ref="finale:firstSysMarginLeft"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="avoidSystemMarginCollisions">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="pianoBraceBracketOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:defBracketPos"/>
+        <xs:element ref="finale:centerThickness"/>
+        <xs:element ref="finale:endThickness"/>
+        <xs:element ref="finale:outerWingY"/>
+        <xs:element ref="finale:innerTipY"/>
+        <xs:element ref="finale:innerWingY"/>
+        <xs:element ref="finale:outerTipX"/>
+        <xs:element ref="finale:outerTipY"/>
+        <xs:element ref="finale:outerWingX"/>
+        <xs:element ref="finale:width"/>
+        <xs:element ref="finale:innerTipX"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="defBracketPos" type="xs:integer"/>
+  <xs:element name="centerThickness" type="xs:double"/>
+  <xs:element name="endThickness" type="xs:double"/>
+  <xs:element name="outerWingY" type="xs:double"/>
+  <xs:element name="innerTipY" type="xs:double"/>
+  <xs:element name="innerWingY" type="xs:double"/>
+  <xs:element name="outerTipX" type="xs:double"/>
+  <xs:element name="outerTipY" type="xs:double"/>
+  <xs:element name="outerWingX" type="xs:double"/>
+  <xs:element name="innerTipX" type="xs:double"/>
+  <xs:element name="playbackOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:enMeas"/>
+        <xs:element ref="finale:edusPerBeat"/>
+        <xs:element ref="finale:baseVelocity"/>
+        <xs:element ref="finale:stMeas"/>
+        <xs:element ref="finale:startPass"/>
+        <xs:element ref="finale:endPass"/>
+        <xs:element ref="finale:beatsPerMinute"/>
+        <xs:element ref="finale:hyperclickBeatData"/>
+        <xs:element ref="finale:sendClickOff"/>
+        <xs:element ref="finale:hyperclickBarData"/>
+        <xs:element ref="finale:hyperclickBeatNote"/>
+        <xs:element ref="finale:hyperclickBarNote"/>
+        <xs:element ref="finale:countOffBars"/>
+        <xs:element ref="finale:countOffWhenRecording"/>
+        <xs:element ref="finale:clickWhenRecording"/>
+        <xs:element ref="finale:clickSourceType"/>
+        <xs:element ref="finale:playVelocity"/>
+        <xs:element ref="finale:doPlaybackRepeats"/>
+        <xs:element ref="finale:smpteTimeType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enMeas" type="xs:integer"/>
+  <xs:element name="edusPerBeat" type="xs:integer"/>
+  <xs:element name="baseVelocity" type="xs:integer"/>
+  <xs:element name="stMeas" type="xs:integer"/>
+  <xs:element name="startPass" type="xs:integer"/>
+  <xs:element name="endPass" type="xs:integer"/>
+  <xs:element name="beatsPerMinute" type="xs:integer"/>
+  <xs:element name="hyperclickBeatData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clickOn"/>
+        <xs:element ref="finale:clickOff"/>
+        <xs:element ref="finale:virtChannel"/>
+        <xs:element ref="finale:clickDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendClickOff">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="hyperclickBarData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clickOn"/>
+        <xs:element ref="finale:clickOff"/>
+        <xs:element ref="finale:virtChannel"/>
+        <xs:element ref="finale:clickDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyperclickBeatNote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clickOn"/>
+        <xs:element ref="finale:virtChannel"/>
+        <xs:element ref="finale:clickDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyperclickBarNote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clickOn"/>
+        <xs:element ref="finale:virtChannel"/>
+        <xs:element ref="finale:clickDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countOffBars" type="xs:integer"/>
+  <xs:element name="countOffWhenRecording">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="clickWhenRecording">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="clickSourceType" type="xs:NCName"/>
+  <xs:element name="playVelocity" type="xs:integer"/>
+  <xs:element name="doPlaybackRepeats">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="repeatOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:bracketHeight"/>
+        <xs:element ref="finale:maxPasses"/>
+        <xs:element ref="finale:addPeriod"/>
+        <xs:element ref="finale:thickLineWidth"/>
+        <xs:element ref="finale:thinLineWidth"/>
+        <xs:element ref="finale:lineSpace"/>
+        <xs:element ref="finale:forwardDotHPos"/>
+        <xs:element ref="finale:backwardDotHPos"/>
+        <xs:element ref="finale:upperDotVPos"/>
+        <xs:element ref="finale:lowerDotVPos"/>
+        <xs:element ref="finale:afterClefSpace"/>
+        <xs:element ref="finale:afterKeySpace"/>
+        <xs:element ref="finale:afterTimeSpace"/>
+        <xs:element ref="finale:bracketHookLen"/>
+        <xs:element ref="finale:bracketLineWidth"/>
+        <xs:element ref="finale:bracketTextHPos"/>
+        <xs:element ref="finale:bracketTextVPos"/>
+        <xs:element ref="finale:bracketEndAnchorThinLine"/>
+        <xs:element ref="finale:showOnTopStaffOnly"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bracketHeight" type="xs:integer"/>
+  <xs:element name="maxPasses" type="xs:integer"/>
+  <xs:element name="addPeriod">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="thickLineWidth" type="xs:integer"/>
+  <xs:element name="thinLineWidth" type="xs:integer"/>
+  <xs:element name="forwardDotHPos" type="xs:integer"/>
+  <xs:element name="backwardDotHPos" type="xs:integer"/>
+  <xs:element name="upperDotVPos" type="xs:integer"/>
+  <xs:element name="lowerDotVPos" type="xs:integer"/>
+  <xs:element name="afterClefSpace" type="xs:integer"/>
+  <xs:element name="afterKeySpace" type="xs:integer"/>
+  <xs:element name="afterTimeSpace" type="xs:integer"/>
+  <xs:element name="bracketHookLen" type="xs:integer"/>
+  <xs:element name="bracketLineWidth" type="xs:integer"/>
+  <xs:element name="bracketTextHPos" type="xs:integer"/>
+  <xs:element name="bracketTextVPos" type="xs:integer"/>
+  <xs:element name="bracketEndAnchorThinLine">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="showOnTopStaffOnly">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="scoreManagerOptions">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="smartShapeOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:shortHairpinOpeningWidth"/>
+        <xs:element ref="finale:crescHeight"/>
+        <xs:element ref="finale:maximumShortHairpinLength"/>
+        <xs:element ref="finale:crescLineWidth"/>
+        <xs:element ref="finale:hookLength"/>
+        <xs:element ref="finale:smartLineWidth"/>
+        <xs:element ref="finale:smartDashOn"/>
+        <xs:element ref="finale:smartDashOff"/>
+        <xs:element ref="finale:crescHorizontal"/>
+        <xs:element ref="finale:slurThicknessCp1Y"/>
+        <xs:element ref="finale:slurThicknessCp2Y"/>
+        <xs:element ref="finale:slurAvoidAccidentals"/>
+        <xs:element ref="finale:slurAvoidStaffLinesAmt"/>
+        <xs:element ref="finale:maxSlurStretch"/>
+        <xs:element ref="finale:maxSlurLift"/>
+        <xs:element ref="finale:slurSymmetry"/>
+        <xs:element ref="finale:useEngraverSlurs"/>
+        <xs:element ref="finale:slurLeftBreakHorzAdj"/>
+        <xs:element ref="finale:slurBreakVertAdj"/>
+        <xs:element ref="finale:slurAvoidStaffLines"/>
+        <xs:element ref="finale:slurPadding"/>
+        <xs:element ref="finale:maxSlurAngle"/>
+        <xs:element ref="finale:slurAcciPadding"/>
+        <xs:element ref="finale:slurDoStretchFirst"/>
+        <xs:element ref="finale:slurStretchByPercent"/>
+        <xs:element ref="finale:maxSlurStretchPercent"/>
+        <xs:element ref="finale:articAvoidSlurAmt"/>
+        <xs:element ref="finale:ssLineStyleCmpGlissando"/>
+        <xs:element ref="finale:ssLineStyleCmpTabSlide"/>
+        <xs:element ref="finale:ssLineStyleCmpTabBendCurve"/>
+        <xs:element ref="finale:guitarBendUseParens"/>
+        <xs:element ref="finale:guitarBendHideBendTo"/>
+        <xs:element ref="finale:guitarBendGenText"/>
+        <xs:element ref="finale:guitarBendUseFull"/>
+        <xs:element maxOccurs="unbounded" ref="finale:slurConnectStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:slurControlStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:tabSlideConnectStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:glissandoConnectStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:bendCurveConnectStyle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shortHairpinOpeningWidth" type="xs:integer"/>
+  <xs:element name="crescHeight" type="xs:integer"/>
+  <xs:element name="maximumShortHairpinLength" type="xs:integer"/>
+  <xs:element name="crescLineWidth" type="xs:integer"/>
+  <xs:element name="hookLength" type="xs:integer"/>
+  <xs:element name="smartLineWidth" type="xs:integer"/>
+  <xs:element name="smartDashOn" type="xs:integer"/>
+  <xs:element name="smartDashOff" type="xs:integer"/>
+  <xs:element name="crescHorizontal">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurThicknessCp1Y" type="xs:integer"/>
+  <xs:element name="slurThicknessCp2Y" type="xs:integer"/>
+  <xs:element name="slurAvoidAccidentals">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurAvoidStaffLinesAmt" type="xs:integer"/>
+  <xs:element name="maxSlurStretch" type="xs:integer"/>
+  <xs:element name="maxSlurLift" type="xs:integer"/>
+  <xs:element name="slurSymmetry" type="xs:integer"/>
+  <xs:element name="useEngraverSlurs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurLeftBreakHorzAdj" type="xs:integer"/>
+  <xs:element name="slurBreakVertAdj" type="xs:integer"/>
+  <xs:element name="slurAvoidStaffLines">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurPadding" type="xs:integer"/>
+  <xs:element name="maxSlurAngle" type="xs:integer"/>
+  <xs:element name="slurAcciPadding" type="xs:integer"/>
+  <xs:element name="slurDoStretchFirst">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurStretchByPercent">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="maxSlurStretchPercent" type="xs:integer"/>
+  <xs:element name="articAvoidSlurAmt" type="xs:integer"/>
+  <xs:element name="ssLineStyleCmpGlissando" type="xs:integer"/>
+  <xs:element name="ssLineStyleCmpTabSlide" type="xs:integer"/>
+  <xs:element name="ssLineStyleCmpTabBendCurve" type="xs:integer"/>
+  <xs:element name="guitarBendUseParens">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="guitarBendHideBendTo">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="guitarBendGenText">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="guitarBendUseFull">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="slurConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:connectIndex"/>
+        <xs:element minOccurs="0" ref="finale:xOffset"/>
+        <xs:element minOccurs="0" ref="finale:yOffset"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="slurControlStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:span"/>
+        <xs:element ref="finale:inset"/>
+        <xs:element ref="finale:height"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="inset" type="xs:integer"/>
+  <xs:element name="tabSlideConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:connectIndex"/>
+        <xs:element ref="finale:xOffset"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="glissandoConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:connectIndex"/>
+        <xs:element ref="finale:xOffset"/>
+        <xs:element ref="finale:yOffset"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bendCurveConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:connectIndex"/>
+          <xs:element ref="finale:xOffset"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:yOffset"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="smpOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:soloStaff"/>
+        <xs:element ref="finale:soloInst"/>
+        <xs:element ref="finale:includeMusFile"/>
+        <xs:element ref="finale:isAssessable"/>
+        <xs:element ref="finale:includeAudio"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soloStaff" type="xs:integer"/>
+  <xs:element name="soloInst" type="xs:integer"/>
+  <xs:element name="includeMusFile">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="isAssessable">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="includeAudio">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="staffOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:staffSeparation"/>
+        <xs:element ref="finale:staffSeparIncr"/>
+        <xs:element ref="finale:autoAdjustStaffSepar"/>
+        <xs:element ref="finale:namePos"/>
+        <xs:element ref="finale:namePosAbbrv"/>
+        <xs:element ref="finale:groupNameFullPos"/>
+        <xs:element ref="finale:groupNameAbbrvPos"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="staffSeparation" type="xs:integer"/>
+  <xs:element name="staffSeparIncr" type="xs:integer"/>
+  <xs:element name="autoAdjustStaffSepar">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="namePos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:horzOff"/>
+        <xs:element ref="finale:justify"/>
+        <xs:element ref="finale:halign"/>
+        <xs:element ref="finale:expand"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="namePosAbbrv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:horzOff"/>
+        <xs:element ref="finale:justify"/>
+        <xs:element ref="finale:halign"/>
+        <xs:element ref="finale:expand"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="groupNameFullPos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:horzOff"/>
+        <xs:element ref="finale:justify"/>
+        <xs:element ref="finale:halign"/>
+        <xs:element ref="finale:expand"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="groupNameAbbrvPos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:horzOff"/>
+        <xs:element ref="finale:justify"/>
+        <xs:element ref="finale:halign"/>
+        <xs:element ref="finale:expand"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stemOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:halfStemLength"/>
+        <xs:element ref="finale:stemLength"/>
+        <xs:element ref="finale:stem2"/>
+        <xs:element ref="finale:revStemAdj"/>
+        <xs:element ref="finale:stemWidth"/>
+        <xs:element ref="finale:stemLift"/>
+        <xs:element ref="finale:useStemConnections"/>
+        <xs:element ref="finale:stemConnect"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="halfStemLength" type="xs:integer"/>
+  <xs:element name="stemLength" type="xs:integer"/>
+  <xs:element name="stem2" type="xs:integer"/>
+  <xs:element name="revStemAdj" type="xs:integer"/>
+  <xs:element name="stemWidth" type="xs:integer"/>
+  <xs:element name="stemLift" type="xs:integer"/>
+  <xs:element name="useStemConnections">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="stemConnect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:symbol"/>
+        <xs:element ref="finale:upStemVert"/>
+        <xs:element ref="finale:downStemVert"/>
+      </xs:sequence>
+      <xs:attribute name="index" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="symbol" type="xs:integer"/>
+  <xs:element name="upStemVert" type="xs:integer"/>
+  <xs:element name="downStemVert" type="xs:integer"/>
+  <xs:element name="textOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:textLineSpacingPercent"/>
+        <xs:element ref="finale:tabSpaces"/>
+        <xs:element maxOccurs="unbounded" ref="finale:insertSymbolInfo"/>
+        <xs:element ref="finale:textWordWrap"/>
+        <xs:element ref="finale:textExpandSingleWord"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="textLineSpacingPercent" type="xs:integer"/>
+  <xs:element name="tabSpaces" type="xs:integer"/>
+  <xs:element name="insertSymbolInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:trackingBefore"/>
+        <xs:element ref="finale:baselineShiftPerc"/>
+        <xs:element ref="finale:symFont"/>
+        <xs:element ref="finale:symChar"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="trackingBefore" type="xs:integer"/>
+  <xs:element name="baselineShiftPerc" type="xs:integer"/>
+  <xs:element name="symFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="symChar" type="xs:integer"/>
+  <xs:element name="textWordWrap">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="textExpandSingleWord">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="tieOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:frontTieSepar"/>
+        <xs:element ref="finale:thicknessRight"/>
+        <xs:element ref="finale:thicknessLeft"/>
+        <xs:element ref="finale:breakForTimeSigs"/>
+        <xs:element ref="finale:breakForKeySigs"/>
+        <xs:element ref="finale:breakTimeSigLeftHOffset"/>
+        <xs:element ref="finale:breakTimeSigRightHOffset"/>
+        <xs:element ref="finale:breakKeySigLeftHOffset"/>
+        <xs:element ref="finale:breakKeySigRightHOffset"/>
+        <xs:element ref="finale:sysBreakLeftHAdj"/>
+        <xs:element ref="finale:useOuterPlacement"/>
+        <xs:element ref="finale:secondsPlacement"/>
+        <xs:element ref="finale:chordTieDirType"/>
+        <xs:element ref="finale:chordTieDirOpposingSeconds"/>
+        <xs:element ref="finale:afterSingleDot"/>
+        <xs:element ref="finale:afterMultipleDots"/>
+        <xs:element ref="finale:beforeAcciSingleNote"/>
+        <xs:element ref="finale:specialPosMode"/>
+        <xs:element ref="finale:avoidStaffLinesDistance"/>
+        <xs:element ref="finale:insetStyle"/>
+        <xs:element ref="finale:useInterpolation"/>
+        <xs:element ref="finale:avoidStaffLinesOnly"/>
+        <xs:element ref="finale:tieTipWidth"/>
+        <xs:element maxOccurs="unbounded" ref="finale:tieConnectStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:tieControlStyle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="frontTieSepar" type="xs:integer"/>
+  <xs:element name="thicknessRight" type="xs:integer"/>
+  <xs:element name="thicknessLeft" type="xs:integer"/>
+  <xs:element name="breakForTimeSigs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="breakForKeySigs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="breakTimeSigLeftHOffset" type="xs:integer"/>
+  <xs:element name="breakTimeSigRightHOffset" type="xs:integer"/>
+  <xs:element name="breakKeySigLeftHOffset" type="xs:integer"/>
+  <xs:element name="breakKeySigRightHOffset" type="xs:integer"/>
+  <xs:element name="sysBreakLeftHAdj" type="xs:integer"/>
+  <xs:element name="useOuterPlacement">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="secondsPlacement" type="xs:NCName"/>
+  <xs:element name="chordTieDirType" type="xs:NCName"/>
+  <xs:element name="chordTieDirOpposingSeconds">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="afterSingleDot">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="afterMultipleDots">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beforeAcciSingleNote">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="specialPosMode" type="xs:NCName"/>
+  <xs:element name="avoidStaffLinesDistance" type="xs:integer"/>
+  <xs:element name="insetStyle" type="xs:NCName"/>
+  <xs:element name="useInterpolation">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="avoidStaffLinesOnly">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="tieTipWidth" type="xs:double"/>
+  <xs:element name="tieConnectStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:offsetX"/>
+        <xs:element ref="finale:offsetY"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offsetX" type="xs:integer"/>
+  <xs:element name="offsetY" type="xs:integer"/>
+  <xs:element name="tieControlStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:span"/>
+        <xs:element ref="finale:cp1"/>
+        <xs:element ref="finale:cp2"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cp1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:insetRatio"/>
+        <xs:element ref="finale:height"/>
+        <xs:element ref="finale:insetFixed"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cp2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:insetRatio"/>
+        <xs:element ref="finale:height"/>
+        <xs:element ref="finale:insetFixed"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timeSignatureOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:timeFront"/>
+        <xs:element ref="finale:timeBack"/>
+        <xs:element ref="finale:timeFrontParts"/>
+        <xs:element ref="finale:timeBackParts"/>
+        <xs:element ref="finale:timeSigDoAbrvCut"/>
+        <xs:element ref="finale:defFloat"/>
+        <xs:element ref="finale:cautionaryTimeChanges"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timeFront" type="xs:integer"/>
+  <xs:element name="timeBack" type="xs:integer"/>
+  <xs:element name="timeFrontParts" type="xs:integer"/>
+  <xs:element name="timeBackParts" type="xs:integer"/>
+  <xs:element name="timeSigDoAbrvCut">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="defFloat" type="xs:integer"/>
+  <xs:element name="cautionaryTimeChanges">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="tupletOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:avoidStaff"/>
+        <xs:element ref="finale:autoBracketStyle"/>
+        <xs:element ref="finale:tupOffY"/>
+        <xs:element ref="finale:numStyle"/>
+        <xs:element ref="finale:posStyle"/>
+        <xs:element ref="finale:breakBracket"/>
+        <xs:element ref="finale:matchHooks"/>
+        <xs:element ref="finale:brackStyle"/>
+        <xs:element ref="finale:smartTuplet"/>
+        <xs:element ref="finale:leftHookLen"/>
+        <xs:element ref="finale:rightHookLen"/>
+        <xs:element ref="finale:tupMaxSlope"/>
+        <xs:element ref="finale:tupLineWidth"/>
+        <xs:element ref="finale:tupNUpstemOffset"/>
+        <xs:element ref="finale:tupNDownstemOffset"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="avoidStaff">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="autoBracketStyle" type="xs:NCName"/>
+  <xs:element name="tupOffY" type="xs:integer"/>
+  <xs:element name="numStyle" type="xs:NCName"/>
+  <xs:element name="posStyle" type="xs:NCName"/>
+  <xs:element name="breakBracket">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="matchHooks">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="brackStyle" type="xs:NCName"/>
+  <xs:element name="smartTuplet">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="leftHookLen" type="xs:integer"/>
+  <xs:element name="rightHookLen" type="xs:integer"/>
+  <xs:element name="tupMaxSlope" type="xs:integer"/>
+  <xs:element name="tupLineWidth" type="xs:integer"/>
+  <xs:element name="tupNUpstemOffset" type="xs:integer"/>
+  <xs:element name="tupNDownstemOffset" type="xs:integer"/>
+  <xs:element name="others">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:durAllot"/>
+        <xs:element maxOccurs="unbounded" ref="finale:fontName"/>
+        <xs:element maxOccurs="unbounded" ref="finale:frameSpec"/>
+        <xs:element ref="finale:fretInst"/>
+        <xs:element ref="finale:fretStyle"/>
+        <xs:element maxOccurs="unbounded" ref="finale:instUsed"/>
+        <xs:element maxOccurs="unbounded" ref="finale:layerAtts"/>
+        <xs:element ref="finale:measNumbRegion"/>
+        <xs:element maxOccurs="unbounded" ref="finale:metaClef"/>
+        <xs:element ref="finale:measSpec"/>
+        <xs:element ref="finale:textBlock"/>
+        <xs:element ref="finale:playbackRoute"/>
+        <xs:element ref="finale:playbackRouteName"/>
+        <xs:element ref="finale:pageSpec"/>
+        <xs:element ref="finale:playDefs"/>
+        <xs:element maxOccurs="unbounded" ref="finale:shapeData"/>
+        <xs:element maxOccurs="unbounded" ref="finale:shapeDef"/>
+        <xs:element maxOccurs="unbounded" ref="finale:shapeList"/>
+        <xs:element maxOccurs="unbounded" ref="finale:ssLineStyle"/>
+        <xs:element ref="finale:staffSystemSpec"/>
+        <xs:element ref="finale:staffPlayData"/>
+        <xs:element maxOccurs="unbounded" ref="finale:staffSpec"/>
+        <xs:element ref="finale:viSetup"/>
+        <xs:element ref="finale:partDef"/>
+        <xs:element ref="finale:partGlobals"/>
+        <xs:element maxOccurs="unbounded" ref="finale:markingsCategory"/>
+        <xs:element maxOccurs="unbounded" ref="finale:markingsCategoryName"/>
+        <xs:element maxOccurs="unbounded" ref="finale:categoryStaffListParts"/>
+        <xs:element maxOccurs="unbounded" ref="finale:categoryStaffListScore"/>
+        <xs:element maxOccurs="unbounded" ref="finale:volumeValue"/>
+        <xs:element maxOccurs="unbounded" ref="finale:bypassFxValue"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="durAllot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:allotment"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="allotment" type="xs:integer"/>
+  <xs:element name="fontName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:charsetBank"/>
+        <xs:element ref="finale:charsetVal"/>
+        <xs:element ref="finale:pitch"/>
+        <xs:element ref="finale:family"/>
+        <xs:element ref="finale:name"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="charsetBank" type="xs:NCName"/>
+  <xs:element name="charsetVal" type="xs:integer"/>
+  <xs:element name="family" type="xs:integer"/>
+  <xs:element name="frameSpec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:startEntry"/>
+        <xs:element ref="finale:endEntry"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+      <xs:attribute name="inci" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startEntry" type="xs:integer"/>
+  <xs:element name="endEntry" type="xs:integer"/>
+  <xs:element name="fretInst">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:numFrets"/>
+        <xs:element ref="finale:numStrings"/>
+        <xs:element ref="finale:name"/>
+        <xs:element maxOccurs="unbounded" ref="finale:string"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="numFrets" type="xs:integer"/>
+  <xs:element name="numStrings" type="xs:integer"/>
+  <xs:element name="string">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:pitch"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fretStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:showLastFret"/>
+        <xs:element ref="finale:defNumFrets"/>
+        <xs:element ref="finale:stringGap"/>
+        <xs:element ref="finale:fretGap"/>
+        <xs:element ref="finale:stringWidth"/>
+        <xs:element ref="finale:fretWidth"/>
+        <xs:element ref="finale:nutWidth"/>
+        <xs:element ref="finale:vertTextOff"/>
+        <xs:element ref="finale:horzTextOff"/>
+        <xs:element ref="finale:fretNumFont"/>
+        <xs:element ref="finale:fingNumFont"/>
+        <xs:element ref="finale:vertFingNumOff"/>
+        <xs:element ref="finale:name"/>
+        <xs:element ref="finale:fretNumText"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="showLastFret">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="defNumFrets" type="xs:integer"/>
+  <xs:element name="stringGap" type="xs:integer"/>
+  <xs:element name="fretGap" type="xs:integer"/>
+  <xs:element name="stringWidth" type="xs:integer"/>
+  <xs:element name="fretWidth" type="xs:integer"/>
+  <xs:element name="nutWidth" type="xs:integer"/>
+  <xs:element name="vertTextOff" type="xs:integer"/>
+  <xs:element name="horzTextOff" type="xs:integer"/>
+  <xs:element name="fretNumFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fingNumFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vertFingNumOff" type="xs:integer"/>
+  <xs:element name="fretNumText" type="xs:NCName"/>
+  <xs:element name="instUsed">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:inst">
+          <xs:sequence>
+            <xs:element ref="finale:trackType"/>
+            <xs:element ref="finale:distFromTop"/>
+            <xs:element ref="finale:range"/>
+          </xs:sequence>
+          <xs:attribute name="cmper" use="required" type="xs:integer"/>
+          <xs:attribute name="inci" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="trackType" type="xs:NCName"/>
+  <xs:element name="distFromTop" type="xs:integer"/>
+  <xs:element name="range">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:startMeas"/>
+        <xs:element ref="finale:startEdu"/>
+        <xs:element ref="finale:endMeas"/>
+        <xs:element ref="finale:endEdu"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startEdu" type="xs:integer"/>
+  <xs:element name="endEdu" type="xs:integer"/>
+  <xs:element name="layerAtts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:restOffset"/>
+          <xs:element ref="finale:flipTies"/>
+          <xs:element ref="finale:floatLayer"/>
+          <xs:element ref="finale:useRestOff"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:freezeLayUp"/>
+        <xs:element minOccurs="0" ref="finale:freezeLayer"/>
+        <xs:element minOccurs="0" ref="finale:playback"/>
+        <xs:element ref="finale:spacing"/>
+        <xs:element ref="finale:ignoreHidden"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="restOffset" type="xs:integer"/>
+  <xs:element name="flipTies">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="floatLayer">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="useRestOff">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="freezeLayUp">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="freezeLayer">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="playback">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="ignoreHidden">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="measNumbRegion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:scoreData"/>
+        <xs:element ref="finale:partData"/>
+        <xs:element ref="finale:startMeas"/>
+        <xs:element ref="finale:endMeas"/>
+        <xs:element ref="finale:startChar"/>
+        <xs:element ref="finale:base"/>
+        <xs:element ref="finale:countFromOne"/>
+        <xs:element ref="finale:useScoreInfoForPart"/>
+        <xs:element ref="finale:region"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scoreData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:startFont"/>
+        <xs:element ref="finale:multipleFont"/>
+        <xs:element ref="finale:mmRestFont"/>
+        <xs:element ref="finale:startEnclosure"/>
+        <xs:element ref="finale:multipleEnclosure"/>
+        <xs:element ref="finale:startXdisp"/>
+        <xs:element ref="finale:startYdisp"/>
+        <xs:element ref="finale:multipleYdisp"/>
+        <xs:element ref="finale:mmRestYdisp"/>
+        <xs:element ref="finale:mmRestAlign"/>
+        <xs:element ref="finale:startOfLine"/>
+        <xs:element ref="finale:exceptFirstMeas"/>
+        <xs:element ref="finale:showOnTop"/>
+        <xs:element ref="finale:multipleJustify"/>
+        <xs:element ref="finale:mmRestJustify"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="partData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:startFont"/>
+        <xs:element ref="finale:multipleFont"/>
+        <xs:element ref="finale:mmRestFont"/>
+        <xs:element ref="finale:startEnclosure"/>
+        <xs:element ref="finale:multipleEnclosure"/>
+        <xs:element ref="finale:startXdisp"/>
+        <xs:element ref="finale:startYdisp"/>
+        <xs:element ref="finale:multipleYdisp"/>
+        <xs:element ref="finale:mmRestYdisp"/>
+        <xs:element ref="finale:mmRestAlign"/>
+        <xs:element ref="finale:startOfLine"/>
+        <xs:element ref="finale:exceptFirstMeas"/>
+        <xs:element ref="finale:showOnTop"/>
+        <xs:element ref="finale:multipleJustify"/>
+        <xs:element ref="finale:mmRestJustify"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startChar" type="xs:integer"/>
+  <xs:element name="base" type="xs:integer"/>
+  <xs:element name="countFromOne">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="useScoreInfoForPart">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="region" type="xs:integer"/>
+  <xs:element name="metaClef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clef"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="clef" type="xs:integer"/>
+  <xs:element name="measSpec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:width"/>
+        <xs:element ref="finale:beats"/>
+        <xs:element ref="finale:divbeat"/>
+        <xs:element ref="finale:dispBeats"/>
+        <xs:element ref="finale:dispDivbeat"/>
+        <xs:element ref="finale:posMode"/>
+        <xs:element ref="finale:barline"/>
+        <xs:element ref="finale:leftBarline"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="beats" type="xs:integer"/>
+  <xs:element name="divbeat" type="xs:integer"/>
+  <xs:element name="dispBeats" type="xs:integer"/>
+  <xs:element name="dispDivbeat" type="xs:integer"/>
+  <xs:element name="posMode" type="xs:NCName"/>
+  <xs:element name="barline" type="xs:NCName"/>
+  <xs:element name="leftBarline" type="xs:NCName"/>
+  <xs:element name="textBlock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:textID"/>
+        <xs:element ref="finale:lineSpacingPercent"/>
+        <xs:element ref="finale:newPos36"/>
+        <xs:element ref="finale:showShape"/>
+        <xs:element ref="finale:wordWrap"/>
+        <xs:element ref="finale:roundCorners"/>
+        <xs:element ref="finale:cornerRadius"/>
+        <xs:element ref="finale:textTag"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="textID" type="xs:integer"/>
+  <xs:element name="lineSpacingPercent" type="xs:integer"/>
+  <xs:element name="newPos36">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="showShape">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="wordWrap">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="textTag" type="xs:NCName"/>
+  <xs:element name="playbackRoute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:patchType"/>
+        <xs:element ref="finale:msb"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="patchType" type="xs:NCName"/>
+  <xs:element name="msb" type="xs:integer"/>
+  <xs:element name="playbackRouteName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:name"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pageSpec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:height"/>
+        <xs:element ref="finale:width"/>
+        <xs:element ref="finale:percent"/>
+        <xs:element ref="finale:firstSystem"/>
+        <xs:element ref="finale:scaleContentOnly"/>
+        <xs:element ref="finale:margTop"/>
+        <xs:element ref="finale:margLeft"/>
+        <xs:element ref="finale:margBottom"/>
+        <xs:element ref="finale:margRight"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="percent" type="xs:integer"/>
+  <xs:element name="firstSystem" type="xs:integer"/>
+  <xs:element name="margTop" type="xs:integer"/>
+  <xs:element name="margLeft" type="xs:integer"/>
+  <xs:element name="margBottom" type="xs:integer"/>
+  <xs:element name="margRight" type="xs:integer"/>
+  <xs:element name="playDefs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:smpteStartTime"/>
+        <xs:element ref="finale:smpteTimeType"/>
+        <xs:element ref="finale:resetRepeats"/>
+        <xs:element ref="finale:scrollingPlayback"/>
+        <xs:element ref="finale:midiExpressions"/>
+        <xs:element ref="finale:tempoChanges"/>
+        <xs:element ref="finale:sendPatchesBeforePlay"/>
+        <xs:element ref="finale:noteDurations"/>
+        <xs:element ref="finale:keyVelocities"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="smpteStartTime" type="xs:integer"/>
+  <xs:element name="resetRepeats">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="scrollingPlayback">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="tempoChanges">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="sendPatchesBeforePlay">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="noteDurations">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="keyVelocities">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="shapeData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:data"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="data" type="xs:integer"/>
+  <xs:element name="shapeList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:instruct"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="instruct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:numData"/>
+        <xs:element ref="finale:tag"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="numData" type="xs:integer"/>
+  <xs:element name="tag" type="xs:NCName"/>
+  <xs:element name="ssLineStyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:lineStyle"/>
+        <xs:element minOccurs="0" ref="finale:solidParams"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="finale:charParams"/>
+          <xs:sequence>
+            <xs:element ref="finale:lineCapEndType"/>
+            <xs:element ref="finale:lineCapEndArrowID"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lineStyle" type="xs:NCName"/>
+  <xs:element name="solidParams">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:lineWidth"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="charParams">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:lineChar"/>
+        <xs:element ref="finale:fontSize"/>
+        <xs:element ref="finale:baselineShiftEms"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lineChar" type="xs:integer"/>
+  <xs:element name="baselineShiftEms" type="xs:integer"/>
+  <xs:element name="lineCapEndType" type="xs:NCName"/>
+  <xs:element name="lineCapEndArrowID" type="xs:integer"/>
+  <xs:element name="staffSystemSpec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:startMeas"/>
+        <xs:element ref="finale:endMeas"/>
+        <xs:element ref="finale:horzPercent"/>
+        <xs:element ref="finale:ssysPercent"/>
+        <xs:element ref="finale:staffHeight"/>
+        <xs:element ref="finale:top"/>
+        <xs:element ref="finale:left"/>
+        <xs:element ref="finale:bottom"/>
+        <xs:element ref="finale:scaleVert"/>
+        <xs:element ref="finale:scaleContentOnly"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="horzPercent" type="xs:integer"/>
+  <xs:element name="ssysPercent" type="xs:integer"/>
+  <xs:element name="staffHeight" type="xs:integer"/>
+  <xs:element name="top" type="xs:integer"/>
+  <xs:element name="left" type="xs:integer"/>
+  <xs:element name="bottom" type="xs:integer"/>
+  <xs:element name="scaleVert">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="staffPlayData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:chords"/>
+        <xs:element ref="finale:midiExpressions"/>
+        <xs:element ref="finale:layer1"/>
+        <xs:element ref="finale:layer2"/>
+        <xs:element ref="finale:layer3"/>
+        <xs:element ref="finale:layer4"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="staffSpec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="finale:customStaff"/>
+          <xs:element ref="finale:staffLines"/>
+        </xs:choice>
+        <xs:element ref="finale:lineSpace"/>
+        <xs:element ref="finale:instUuid"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:botBarlineOffset"/>
+          <xs:element ref="finale:topBarlineOffset"/>
+          <xs:element ref="finale:hideMeasNums"/>
+          <xs:element ref="finale:hideRepeats"/>
+          <xs:element ref="finale:hideRptBars"/>
+          <xs:element ref="finale:hideKeySigs"/>
+          <xs:element ref="finale:hideClefs"/>
+          <xs:element ref="finale:noKey"/>
+        </xs:sequence>
+        <xs:element ref="finale:dwRestOffset"/>
+        <xs:element ref="finale:wRestOffset"/>
+        <xs:element ref="finale:hRestOffset"/>
+        <xs:element ref="finale:otherRestOffset"/>
+        <xs:element ref="finale:stemReversal"/>
+        <xs:element ref="finale:botRepeatDotOff"/>
+        <xs:element ref="finale:topRepeatDotOff"/>
+        <xs:element ref="finale:vertTabNumOff"/>
+        <xs:element minOccurs="0" ref="finale:stemDir"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="customStaff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:staffLine"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="staffLine" type="xs:integer"/>
+  <xs:element name="staffLines" type="xs:integer"/>
+  <xs:element name="instUuid" type="xs:string"/>
+  <xs:element name="botBarlineOffset" type="xs:integer"/>
+  <xs:element name="topBarlineOffset" type="xs:integer"/>
+  <xs:element name="hideMeasNums">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="hideRepeats">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="hideRptBars">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="hideKeySigs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="hideClefs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="noKey">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="dwRestOffset" type="xs:integer"/>
+  <xs:element name="wRestOffset" type="xs:integer"/>
+  <xs:element name="hRestOffset" type="xs:integer"/>
+  <xs:element name="otherRestOffset" type="xs:integer"/>
+  <xs:element name="stemReversal" type="xs:integer"/>
+  <xs:element name="botRepeatDotOff" type="xs:integer"/>
+  <xs:element name="topRepeatDotOff" type="xs:integer"/>
+  <xs:element name="vertTabNumOff" type="xs:integer"/>
+  <xs:element name="stemDir" type="xs:NCName"/>
+  <xs:element name="viSetup">
+    <xs:complexType>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="partDef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:nameID"/>
+        <xs:element ref="finale:partOrder"/>
+        <xs:element ref="finale:copies"/>
+        <xs:element ref="finale:printPart"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nameID" type="xs:integer"/>
+  <xs:element name="partOrder" type="xs:integer"/>
+  <xs:element name="copies" type="xs:integer"/>
+  <xs:element name="printPart">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="partGlobals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:showTransposed"/>
+        <xs:element ref="finale:studioViewIUlist"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="showTransposed">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="studioViewIUlist" type="xs:integer"/>
+  <xs:element name="markingsCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:categoryType"/>
+        <xs:element ref="finale:textFont"/>
+        <xs:element ref="finale:musicFont"/>
+        <xs:element ref="finale:numberFont"/>
+        <xs:element minOccurs="0" ref="finale:justification"/>
+        <xs:element minOccurs="0" ref="finale:horzAlign"/>
+        <xs:element minOccurs="0" ref="finale:vertAlign"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:vertOffsetEntry"/>
+          <xs:element ref="finale:vertOffsetBaseline"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:usesTextFont"/>
+          <xs:element ref="finale:usesMusicFont"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:usesNumberFont"/>
+        <xs:element minOccurs="0" ref="finale:usesPositioning"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:usesStaffList"/>
+          <xs:element ref="finale:usesBreakMmRests"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:breakMmRest"/>
+        <xs:element ref="finale:staffList"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryType" type="xs:NCName"/>
+  <xs:element name="textFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="finale:fontID"/>
+          <xs:element ref="finale:fontSize"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="finale:efx"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="musicFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:fontID"/>
+        <xs:element minOccurs="0" ref="finale:fontSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="numberFont">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="justification" type="xs:NCName"/>
+  <xs:element name="horzAlign" type="xs:NCName"/>
+  <xs:element name="vertAlign" type="xs:NCName"/>
+  <xs:element name="vertOffsetEntry" type="xs:integer"/>
+  <xs:element name="vertOffsetBaseline" type="xs:integer"/>
+  <xs:element name="usesTextFont">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="usesMusicFont">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="usesNumberFont">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="usesPositioning">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="usesStaffList">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="usesBreakMmRests">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="breakMmRest">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="staffList" type="xs:integer"/>
+  <xs:element name="markingsCategoryName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:name"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryStaffListParts">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:inst">
+          <xs:attribute name="cmper" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categoryStaffListScore">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:inst">
+          <xs:attribute name="cmper" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="volumeValue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:volume"/>
+      </xs:sequence>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="volume" type="xs:double"/>
+  <xs:element name="bypassFxValue">
+    <xs:complexType>
+      <xs:attribute name="cmper" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="details">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:baselinesChords"/>
+        <xs:element ref="finale:baselinesExprAboveStaff"/>
+        <xs:element ref="finale:baselinesExprBelowStaff"/>
+        <xs:element maxOccurs="unbounded" ref="finale:baselinesLyricsChorus"/>
+        <xs:element maxOccurs="unbounded" ref="finale:baselinesLyricsSection"/>
+        <xs:element maxOccurs="unbounded" ref="finale:baselinesLyricsVerse"/>
+        <xs:element maxOccurs="unbounded" ref="finale:gfhold"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesChords">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesExprAboveStaff">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesExprBelowStaff">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesLyricsChorus">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:sequence>
+            <xs:element ref="finale:lyricNumber"/>
+          </xs:sequence>
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+          <xs:attribute name="inci" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesLyricsSection">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:sequence>
+            <xs:element ref="finale:lyricNumber"/>
+          </xs:sequence>
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+          <xs:attribute name="inci" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="baselinesLyricsVerse">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="finale:basedisp">
+          <xs:sequence>
+            <xs:element ref="finale:lyricNumber"/>
+          </xs:sequence>
+          <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+          <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+          <xs:attribute name="inci" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gfhold">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:clefID"/>
+        <xs:element ref="finale:clefPercent"/>
+        <xs:element ref="finale:frame1"/>
+        <xs:element minOccurs="0" ref="finale:frame2"/>
+      </xs:sequence>
+      <xs:attribute name="cmper1" use="required" type="xs:integer"/>
+      <xs:attribute name="cmper2" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="clefID" type="xs:integer"/>
+  <xs:element name="clefPercent" type="xs:integer"/>
+  <xs:element name="frame1" type="xs:integer"/>
+  <xs:element name="frame2" type="xs:integer"/>
+  <xs:element name="entries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="finale:entry"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:dura"/>
+        <xs:element ref="finale:numNotes"/>
+        <xs:element ref="finale:isValid"/>
+        <xs:choice>
+          <xs:element ref="finale:isNote"/>
+          <xs:sequence>
+            <xs:element ref="finale:floatRest"/>
+            <xs:element ref="finale:beam"/>
+          </xs:sequence>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="finale:upStem"/>
+        <xs:element minOccurs="0" ref="finale:sorted"/>
+        <xs:element minOccurs="0" ref="finale:note"/>
+      </xs:sequence>
+      <xs:attribute name="entnum" use="required" type="xs:integer"/>
+      <xs:attribute name="next" use="required" type="xs:integer"/>
+      <xs:attribute name="prev" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dura" type="xs:integer"/>
+  <xs:element name="numNotes" type="xs:integer"/>
+  <xs:element name="isNote">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="floatRest">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="beam">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="upStem">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="sorted">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:harmLev"/>
+        <xs:element ref="finale:harmAlt"/>
+        <xs:element ref="finale:isValid"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="harmLev" type="xs:integer"/>
+  <xs:element name="harmAlt" type="xs:integer"/>
+  <xs:element name="texts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:blockText"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="blockText">
+    <xs:complexType mixed="true">
+      <xs:attribute name="number" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="year" type="xs:integer"/>
+  <xs:element name="month" type="xs:integer"/>
+  <xs:element name="day" type="xs:integer"/>
+  <xs:element name="modifiedBy">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="enigmaVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:major"/>
+        <xs:element ref="finale:minor"/>
+        <xs:element ref="finale:devStatus"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="application" type="xs:NCName"/>
+  <xs:element name="platform" type="xs:NCName"/>
+  <xs:element name="appVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:major"/>
+        <xs:element ref="finale:minor"/>
+        <xs:element ref="finale:maint"/>
+        <xs:element ref="finale:devStatus"/>
+        <xs:element ref="finale:build"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="maint" type="xs:integer"/>
+  <xs:element name="build" type="xs:integer"/>
+  <xs:element name="fileVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:major"/>
+        <xs:element ref="finale:minor"/>
+        <xs:element ref="finale:devStatus"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="appRegion" type="xs:NCName"/>
+  <xs:element name="fontID" type="xs:integer"/>
+  <xs:element name="fontSize" type="xs:integer"/>
+  <xs:element name="efx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:bold"/>
+        <xs:element minOccurs="0" ref="finale:italic"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bold">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="italic">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="justify" type="xs:NCName"/>
+  <xs:element name="connectIndex" type="xs:NCName"/>
+  <xs:element name="xOffset" type="xs:integer"/>
+  <xs:element name="yOffset" type="xs:integer"/>
+  <xs:element name="shapeDef">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="finale:dataList"/>
+        <xs:element ref="finale:instList"/>
+        <xs:element ref="finale:shapeType"/>
+      </xs:choice>
+      <xs:attribute name="cmper" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dataList" type="xs:integer"/>
+  <xs:element name="instList" type="xs:integer"/>
+  <xs:element name="shapeType" type="xs:NCName"/>
+  <xs:element name="spacing" type="xs:string"/>
+  <xs:element name="pageHeight" type="xs:integer"/>
+  <xs:element name="pageWidth" type="xs:integer"/>
+  <xs:element name="pagePercent" type="xs:integer"/>
+  <xs:element name="sysPercent" type="xs:integer"/>
+  <xs:element name="rawStaffHeight" type="xs:integer"/>
+  <xs:element name="leftPageMarginTop" type="xs:integer"/>
+  <xs:element name="leftPageMarginLeft" type="xs:integer"/>
+  <xs:element name="leftPageMarginBottom" type="xs:integer"/>
+  <xs:element name="leftPageMarginRight" type="xs:integer"/>
+  <xs:element name="rightPageMarginTop" type="xs:integer"/>
+  <xs:element name="rightPageMarginLeft" type="xs:integer"/>
+  <xs:element name="rightPageMarginBottom" type="xs:integer"/>
+  <xs:element name="rightPageMarginRight" type="xs:integer"/>
+  <xs:element name="sysMarginTop" type="xs:integer"/>
+  <xs:element name="sysMarginBottom" type="xs:integer"/>
+  <xs:element name="sysDistanceBetween" type="xs:integer"/>
+  <xs:element name="differentFirstSysMargin">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="firstSysMarginTop" type="xs:integer"/>
+  <xs:element name="firstSysMarginLeft" type="xs:integer"/>
+  <xs:element name="width" type="xs:double"/>
+  <xs:element name="clickOn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="finale:status"/>
+        <xs:element ref="finale:data0"/>
+        <xs:element ref="finale:data1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="data1" type="xs:integer"/>
+  <xs:element name="clickOff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:status"/>
+        <xs:element ref="finale:data0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="virtChannel" type="xs:integer"/>
+  <xs:element name="clickDuration" type="xs:integer"/>
+  <xs:element name="smpteTimeType" type="xs:integer"/>
+  <xs:element name="lineSpace" type="xs:integer"/>
+  <xs:element name="span" type="xs:integer"/>
+  <xs:element name="height" type="xs:integer"/>
+  <xs:element name="horzOff" type="xs:integer"/>
+  <xs:element name="halign" type="xs:NCName"/>
+  <xs:element name="expand">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="insetRatio" type="xs:integer"/>
+  <xs:element name="insetFixed" type="xs:integer"/>
+  <xs:element name="pitch" type="xs:integer"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:complexType name="inst">
+    <xs:sequence>
+      <xs:element ref="finale:inst"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="inst" type="xs:integer"/>
+  <xs:element name="startMeas" type="xs:integer"/>
+  <xs:element name="endMeas" type="xs:integer"/>
+  <xs:element name="startFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+        <xs:element ref="finale:efx"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+        <xs:element ref="finale:efx"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mmRestFont">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:fontID"/>
+        <xs:element ref="finale:fontSize"/>
+        <xs:element ref="finale:efx"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startEnclosure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:yAdd"/>
+        <xs:element ref="finale:lineWidth"/>
+        <xs:element ref="finale:sides"/>
+        <xs:element ref="finale:notTall"/>
+        <xs:element ref="finale:roundCorners"/>
+        <xs:element ref="finale:cornerRadius"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="multipleEnclosure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:yAdd"/>
+        <xs:element ref="finale:lineWidth"/>
+        <xs:element ref="finale:sides"/>
+        <xs:element ref="finale:notTall"/>
+        <xs:element ref="finale:roundCorners"/>
+        <xs:element ref="finale:cornerRadius"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startXdisp" type="xs:integer"/>
+  <xs:element name="startYdisp" type="xs:integer"/>
+  <xs:element name="multipleYdisp" type="xs:integer"/>
+  <xs:element name="mmRestYdisp" type="xs:integer"/>
+  <xs:element name="mmRestAlign" type="xs:NCName"/>
+  <xs:element name="startOfLine">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="exceptFirstMeas">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="showOnTop">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="multipleJustify" type="xs:NCName"/>
+  <xs:element name="mmRestJustify" type="xs:NCName"/>
+  <xs:element name="roundCorners">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cornerRadius" type="xs:integer"/>
+  <xs:element name="scaleContentOnly">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="midiExpressions">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element ref="finale:velControlLevel"/>
+        <xs:element ref="finale:velControlSaveFlags"/>
+        <xs:element ref="finale:play"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lineWidth" type="xs:integer"/>
+  <xs:element name="velControlLevel" type="xs:integer"/>
+  <xs:element name="velControlSaveFlags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="finale:controlOn"/>
+        <xs:element ref="finale:function"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="controlOn">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="function" type="xs:NCName"/>
+  <xs:element name="play">
+    <xs:complexType/>
+  </xs:element>
+  <xs:complexType name="basedisp">
+    <xs:sequence>
+      <xs:element ref="finale:basedisp"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="basedisp" type="xs:integer"/>
+  <xs:element name="lyricNumber" type="xs:integer"/>
+  <xs:element name="isValid">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="major" type="xs:integer"/>
+  <xs:element name="minor" type="xs:integer"/>
+  <xs:element name="devStatus" type="xs:NCName"/>
+  <xs:element name="status" type="xs:integer"/>
+  <xs:element name="data0" type="xs:integer"/>
+  <xs:element name="yAdd" type="xs:integer"/>
+  <xs:element name="sides" type="xs:integer"/>
+  <xs:element name="notTall">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>
