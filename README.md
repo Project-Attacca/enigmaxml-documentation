@@ -1,6 +1,6 @@
 # EnigmaXML Documentation
 
-Unofficial documentation for the internal EnigmaXML format used by Finale in files.
+Unofficial documentation for the internal EnigmaXML format used by Finale files.
 
 Finale `.musx` files are actually `gzip` archives of a directory with the following structure.
 
@@ -12,7 +12,7 @@ NotationMetadata.xml
 score.dat
 ```
 
-The `score.dat` file must be extracted using a utility such as the [denigma CLI tool](https://github.com/chrisroode/denigma). The extracted version of the file contains the Finale Enigma data in xml format. This repo maintains a set of markdown files to document what is known about it.
+The EnigmaXML must be extracted from the `score.dat` file using a utility such as the [denigma CLI tool](https://github.com/chrisroode/denigma). The extracted version contains the Finale Enigma data in xml format. This repo maintains documentation to record what is known about it.
 
 
 ## EnigmaXML Format
